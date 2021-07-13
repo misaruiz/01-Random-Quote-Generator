@@ -3,12 +3,12 @@
  * Random Quote Generator - CSS
  */
 
- @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
 
 body {
   background-color: rgb(58, 193, 98);
   color: white;
-  font-family: 'Playfair Display', serif;
+  font-family: "Quicksand", serif;
   padding: 5px;
 }
 
@@ -67,6 +67,7 @@ h1 {
   position: relative;
   margin: 0;
   margin-left: 10px;
+  font-weight: 700;
 }
 
 .quote:before,
@@ -115,6 +116,16 @@ h1 {
   font-style: normal;
 }
 
+p.small {
+  text-align: right;
+  margin-right: 4em;
+  font-size: 1.25rem;
+}
+
+p.small small {
+  font-size: 70%;
+  line-height: 1.4;
+}
 @media (min-width: 768px) {
   body {
     padding: 25px;

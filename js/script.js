@@ -15,75 +15,75 @@ const quotes = [
     quote: 'The only art I\'ll ever study is stuff I can steal from.',
     source: 'David Bowie',
     bookChapterName: 'Steal Like an Artist',
-    bookChapterNumber: 1,
-    bookPage: 6
+    bookChapterNumber: '1',
+    bookPage: '6'
   },
   {
     quote: 'Start copying what you love. Copy copy copy copy. At the end of the copy you will find your self.',
     source: 'Yohji Yamamoto',
     bookChapterName: 'Don\'t Wait Until You Are to Get Started',
-    bookChapterNumber: 2,
-    bookPage: 33
+    bookChapterNumber: '2',
+    bookPage: '33'
   },
   {
     quote: 'My interest in making music has been to create something that does not exist that I would like to listen to.',
     source: 'Brian Eno',
     bookChapterName: 'Write the Book You Want to Read',
-    bookChapterNumber: 3,
-    bookPage: 46
+    bookChapterNumber: '3',
+    bookPage: '46'
   },
   {
     quote: 'We don\'t know where we get our ideas from. What we do know os that we do not get them from our laptops.',
     source: 'John Cleese',
     bookChapterName: 'Use Your Hands',
-    bookChapterNumber: 4,
-    bookPage: 52
+    bookChapterNumber: '4',
+    bookPage: '52'
   },
   {
     quote: 'The work you do while you procrastinate is probably the work you should be doing for the rest of your life.',
     source: 'Jessica Hische',
     bookChapterName: 'Side Projects and Hobbies are Important',
-    bookChapterNumber: 5,
-    bookPage: 64
+    bookChapterNumber: '5',
+    bookPage: '64'
   },
   {
     quote: 'Don\'t Worry about people stealing your ideas. If your ideas wre any good, you\'ll have to ram them down people\'s throats.',
     source: 'Howard Aiken',
     citation: 'Portraits in Silicon by Robert Slater',
-    year: 1987,
+    year: '1987',
     bookChapterName: 'The Secret: Do Good Work and Share it With People',
-    bookChapterNumber: 6,
-    bookPage: 85
+    bookChapterNumber: '6',
+    bookPage: '85'
   },
   {
     quote: 'Distance and difference are the secret tonic of creativity. When we get home, homes is still the same. But something in our mind has been changed, and that canges everything.',
     source: 'Jonah Lehrer',
     bookChapterName: 'Geography is No Longer Our Master',
-    bookChapterNumber: 7,
-    bookPage: 93
+    bookChapterNumber: '7',
+    bookPage: '93'
   },
   {
     quote: 'Complain about the way other people make software by making software.',
     source: 'Andre Torrez',
     bookChapterName: 'Be Nice. (The World is a Small Town.)',
-    bookChapterNumber: 8,
-    bookPage: 107
+    bookChapterNumber: '8',
+    bookPage: '107'
   },
   {
     quote: 'Be regular and orderly in your life, so that you may be violent and original in your work.',
     source: 'Gustave Flaubert',
     citation: 'Correspondence to Gertrude Tennant',
-    year: 1876,
+    year: '1876',
     bookChapterName: 'Be Boring. (It\'s the Only Way to Get Work Done.)',
-    bookChapterNumber: 9,
-    bookPage: 118
+    bookChapterNumber: '9',
+    bookPage: '118'
   },
   {
     quote: 'Telling yourself you have all the time in the world, all the money in the world, all the colors in the palette, anything you want—that just kills creativity.',
     source: 'Jack White',
     bookChapterName: 'Creativity is Subtraction',
-    bookChapterNumber: 10,
-    bookPage: 138
+    bookChapterNumber: '10',
+    bookPage: '138'
   }
 ];
 
@@ -91,12 +91,45 @@ const quotes = [
 /***
  * `getRandomQuote` function
 ***/
+function getRandomQuote() { 
+  var randomNumber = Math.floor( Math.random() * 9 );
+  return quotes[randomNumber];
+};
+ 
+ /**
+ * Code below is to load a new background color everything time the user clicks 'Show another quote'
+ */
+let randomValue = () => Math.floor( Math.random() * 256 );
 
-
+  function getBgColor(value) {
+    const color = `rgb( ${value()}, ${value()}, ${value()} )`;
+    /** found a way to do it here https://www.w3schools.com/jsref/prop_style_backgroundcolor.asp */
+    document.body.style.backgroundColor = color;
+  };
 
 /***
  * `printQuote` function
 ***/
+
+function printQuote() {
+  let quote = getRandomQuote();
+  let html = `
+  <p class="quote">${quote.quote}</p>
+  <p class="source">${quote.source}`;
+  if (quote.citation) {
+    html += `<span class="citation">${quote.citation}</span>`;
+  };
+  if (quote.year) {
+    html += `<span class="year">${quote.year}</span>`;
+  };
+  html += `</p><br>
+  <p class="small"><small>Austin Kleon. "${quote.bookChapterName} (Ch ${quote.bookChapterNumber})" <em>Steal Like an Artist: 10 Things Nobody Told You About Being Creative</em>, Workman Publishing Company Inc., 2012, pp. ${quote.bookPage}.</small>
+  </p>`;
+  document.getElementById('quote-box').innerHTML = html;
+  getBgColor(randomValue);
+}
+
+setInterval(printQuote, 10000);
 
 
 
@@ -106,3 +139,6 @@ const quotes = [
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
+
+
+
