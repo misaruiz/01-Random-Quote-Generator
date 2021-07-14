@@ -1,14 +1,13 @@
 /******************************************
 Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
+Misael Ruiz
 ******************************************/
 
-// For assistance: 
-// Check the "Project Resources" section of the project instructions
-// Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
 /*** 
  * `quotes` array 
+ * Includes quotes from Steal Like an Artist from Austin Kleon
 ***/
 const quotes = [
   {
@@ -92,7 +91,7 @@ const quotes = [
  * `getRandomQuote` function
 ***/
 function getRandomQuote() { 
-  var randomNumber = Math.floor( Math.random() * 9 );
+  var randomNumber = Math.floor( Math.random() * (quotes.length - 1) );
   return quotes[randomNumber];
 };
  
@@ -129,6 +128,7 @@ function printQuote() {
   getBgColor(randomValue);
 }
 
+/** Auto-refreshed quotes: The quote on the page automatically updates at regular intervals */
 setInterval(printQuote, 10000);
 
 
