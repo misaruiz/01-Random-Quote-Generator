@@ -32,7 +32,7 @@ const quotes = [
     bookPage: '46'
   },
   {
-    quote: 'We don\'t know where we get our ideas from. What we do know os that we do not get them from our laptops.',
+    quote: 'We don\'t know where we get our ideas from. What we do know is that we do not get them from our laptops.',
     source: 'John Cleese',
     bookChapterName: 'Use Your Hands',
     bookChapterNumber: '4',
@@ -46,7 +46,7 @@ const quotes = [
     bookPage: '64'
   },
   {
-    quote: 'Don\'t Worry about people stealing your ideas. If your ideas wre any good, you\'ll have to ram them down people\'s throats.',
+    quote: 'Don\'t Worry about people stealing your ideas. If your ideas were any good, you\'ll have to ram them down people\'s throats.',
     source: 'Howard Aiken',
     citation: 'Portraits in Silicon by Robert Slater',
     year: '1987',
@@ -104,6 +104,7 @@ let randomValue = () => Math.floor( Math.random() * 256 );
     const color = `rgb( ${value()}, ${value()}, ${value()} )`;
     /** found a way to do it here https://www.w3schools.com/jsref/prop_style_backgroundcolor.asp */
     document.body.style.backgroundColor = color;
+    document.getElementById('load-quote').style.backgroundColor = color;
   };
 
 /***
@@ -113,22 +114,25 @@ let randomValue = () => Math.floor( Math.random() * 256 );
 function printQuote() {
   let quote = getRandomQuote();
   let html = `
-  <p class="quote">${quote.quote}</p>
-  <p class="source">${quote.source}`;
+  <h2 class="quote">${quote.quote}</h2>
+  <footer class="source blockquote-footer mt-2">${quote.source}`;
   if (quote.citation) {
-    html += `<span class="citation">${quote.citation}</span>`;
+    html += `, ${quote.citation}`;
   };
   if (quote.year) {
-    html += `<span class="year">${quote.year}</span>`;
+    html += `, ${quote.year}`;
   };
-  html += `</p><br>
-  <p class="small"><small>Austin Kleon. "${quote.bookChapterName} (Ch ${quote.bookChapterNumber})" <em>Steal Like an Artist: 10 Things Nobody Told You About Being Creative</em>, Workman Publishing Company Inc., 2012, pp. ${quote.bookPage}.</small>
-  </p>`;
+  html += `
+  <cite title="Source Title">Austin Kleon. "${quote.bookChapterName} (Ch ${quote.bookChapterNumber})" Steal Like an Artist: 10 Things Nobody Told You About Being Creative, Workman Publishing Company Inc., 2012, pp. ${quote.bookPage}.</cite>
+  </footer>`;
   document.getElementById('quote-box').innerHTML = html;
   getBgColor(randomValue);
 }
 
-/** Auto-refreshed quotes: The quote on the page automatically updates at regular intervals */
+
+
+
+// /** Auto-refreshed quotes: The quote on the page automatically updates at regular intervals */
 setInterval(printQuote, 10000);
 
 

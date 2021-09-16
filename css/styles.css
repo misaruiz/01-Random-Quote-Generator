@@ -5,13 +5,13 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
 
+
+
 body {
   background-color: rgb(58, 193, 98);
-  color: white;
   font-family: "Quicksand", serif;
-  padding: 5px;
 }
-
+/* 
 header {
   display: flex;
   flex-flow: row wrap;
@@ -174,4 +174,4 @@ p.small small {
   .source {
     font-size: 1.25rem;
   }
-}
+} */
